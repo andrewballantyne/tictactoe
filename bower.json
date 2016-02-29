@@ -1,0 +1,19 @@
+{
+  "name": "tictactoe",
+  "version": "0.0.1",
+  "authors": [
+    "Ballantyno <andrew_ballantyne@rogers.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.x.x"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

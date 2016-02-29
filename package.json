@@ -1,0 +1,14 @@
+{
+  "name": "tictactoe",
+  "version": "0.0.1",
+  "dependencies": {
+    "typescript": "1.6.x",
+    "bower": "*",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-ts": "*"
+  }
+}
