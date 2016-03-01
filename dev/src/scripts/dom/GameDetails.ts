@@ -28,6 +28,7 @@ class GameDetails extends AbstractDomTicTacToe {
     this.setupListeners();
 
     this.updatePlayer(this.gameState.getCurrentPlayer());
+    this.updateScore();
   }
 
   private setupListeners():void {
@@ -75,12 +76,21 @@ class GameDetails extends AbstractDomTicTacToe {
   private updateScore():void {
     var oScore:number = Players.getPlayerScore(PlayerType.O_PLAYER);
     var xScore:number = Players.getPlayerScore(PlayerType.X_PLAYER);
-    var tied:number = Players.getPlayerScore(PlayerType.TIE_PLAYER);
-    var total:number = oScore + xScore + tied;
+    var tieScore:number = Players.getPlayerScore(PlayerType.TIE_PLAYER);
+    var total:number = oScore + xScore + tieScore;
+
+    var oScorePercent:number = 0;
+    var xScorePercent:number = 0;
+    var tieScorePercent:number = 0;
+    if (total > 0) {
+      oScorePercent = oScore / total;
+      xScorePercent = xScore / total;
+      tieScorePercent = tieScore / total;
+    }
 
     this.totalGamesPlayed.text(total);
-    this.oPlayerScore.text(oScore);
-    this.xPlayerScore.text(xScore);
-    this.tiesScore.text(tied);
+    this.oPlayerScore.text(oScore + " (" + (oScorePercent * 100).toFixed(1) + "%)");
+    this.xPlayerScore.text(xScore + " (" + (xScorePercent * 100).toFixed(1) + "%)");
+    this.tiesScore.text(tieScore + " (" + (tieScorePercent * 100).toFixed(1) + "%)");
   }
 }
