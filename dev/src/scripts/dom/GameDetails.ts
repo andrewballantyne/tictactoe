@@ -5,13 +5,14 @@
  */
 class GameDetails extends AbstractDomTicTacToe {
   private gameState:GameState;
-  private currentPlayerPane:JQuery;
   private newGameBtn:JQuery;
   private newGameRandomPlayerBtn:JQuery;
   private resetDataBtn:JQuery;
   private cancelResetDataBtnConfirmation:()=>void;
   private totalGamesPlayed:JQuery;
+  private oPlayerContainer:JQuery;
   private oPlayerScore:JQuery;
+  private xPlayerContainer:JQuery;
   private xPlayerScore:JQuery;
   private tiesScore:JQuery;
 
@@ -19,14 +20,15 @@ class GameDetails extends AbstractDomTicTacToe {
     super();
 
     this.gameState = gameState;
-    this.currentPlayerPane = $('#currentPlayer');
     this.newGameBtn = $('#newGameBtn');
     this.newGameRandomPlayerBtn = $('#newGameRandomPlayerBtn').find('input');
     this.resetDataBtn = $('#resetDataBtn');
     this.cancelResetDataBtnConfirmation = null;
     this.totalGamesPlayed = $('#totalGames').find('.value');
-    this.oPlayerScore = $('#oPlayer').find('.value');
-    this.xPlayerScore = $('#xPlayer').find('.value');
+    this.oPlayerContainer = $('#oPlayer');
+    this.oPlayerScore = this.oPlayerContainer.find('.value');
+    this.xPlayerContainer = $('#xPlayer');
+    this.xPlayerScore = this.xPlayerContainer.find('.value');
     this.tiesScore = $('#ties').find('.value');
 
     this.setupListeners();
@@ -81,8 +83,13 @@ class GameDetails extends AbstractDomTicTacToe {
   }
 
   private updatePlayer(player:PlayerType):void {
-    this.currentPlayerPane.empty();
-    this.currentPlayerPane.append(this.getSelectionContent(Players.getPlayerSymbol(player)));
+    if (player === PlayerType.O_PLAYER) {
+      this.xPlayerContainer.removeClass('active');
+      this.oPlayerContainer.addClass('active');
+    } else if (player === PlayerType.X_PLAYER) {
+      this.oPlayerContainer.removeClass('active');
+      this.xPlayerContainer.addClass('active');
+    }
   }
 
   private updateScore():void {

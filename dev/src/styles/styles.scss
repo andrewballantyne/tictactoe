@@ -14,6 +14,8 @@
 }
 
 body {
+  margin-bottom: 50px;
+
   * {
     @include user-select();
   }
@@ -100,16 +102,43 @@ body {
     .scoreContainer {
       text-align: center;
 
-      .valueContainer {
-        padding: 0;
+      .statContainer {
+        display: -webkit-flex;
+        display: flex;
+        flex-flow: row;
 
-        .header {
-          border-bottom: 1px solid #ccc;
+        .marker {
+          color: #ccc;
+          flex: 0 0 50px;
+          font-size: 42px;
+          padding-top: 8px;
         }
-        .value {
+        .valueContainer {
+          border-width: 2px;
+          flex: 1 0 auto;
+          padding: 0;
 
+          .header {
+            border-bottom: 1px solid #ccc;
+          }
+          .value {
+          }
         }
       }
+      .statContainer.active {
+        .marker {
+          color: green;
+        }
+        .valueContainer {
+          background-color: lightgreen;
+          border-color: darkgreen;
+
+          .header {
+            border-color: green;
+          }
+        }
+      }
+
     }
   }
 
