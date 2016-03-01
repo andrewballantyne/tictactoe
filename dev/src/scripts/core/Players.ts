@@ -26,10 +26,13 @@ class Players {
   /**
    * Get a player symbol (currently a glyphicon name).
    *
+   * Note: if a tie is passed in for the player, a null is returned.
+   *
    * @param player - The player you're trying to get the symbol for
-   * @returns - The string value for the glyphicon name (ie, for glyphicon-remove, it would just be 'remove')
+   * @returns - The string value for the glyphicon name (ie, for glyphicon-remove, it would just be 'remove'); or null if player == tie
    */
   public static getPlayerSymbol(player:PlayerType):string {
+    if (player == null) return null;
     return Players.playerMapping[<number>player];
   }
 

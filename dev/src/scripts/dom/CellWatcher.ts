@@ -23,24 +23,7 @@ class CellWatcher extends AbstractDomTicTacToe {
       this.handleSquareClick(thisSquare);
     });
 
-    this.gameState.listenForPlayerChanges(this.playerStateChanged, this);
     this.gameState.listenForGameChanges(this.gameStateChanged, this);
-  }
-
-  private playerStateChanged(player:PlayerType, victor:boolean):void {
-    if (victor) {
-      // Game Over
-      if (player != null) {
-        // The provided player won
-        this.disable(this.gameSquares);
-        var victoryPath:string[] = this.gameState.getVictoryPath();
-        this.highlightVictoryPath(victoryPath);
-      } else {
-        // A tie, no winner
-      }
-    } else {
-      // Switch of players
-    }
   }
 
   private gameStateChanged(gameStateType:StateType):void {
@@ -50,6 +33,10 @@ class CellWatcher extends AbstractDomTicTacToe {
         break;
       case StateType.RESET_DATA:
         this.resetSquares();
+        break;
+      case StateType.GAME_OVER:
+        this.disable(this.gameSquares);
+        this.highlightVictoryPath(this.gameState.getVictoryPath());
         break;
       default:
         console.error("Missing state setting: " + gameStateType);

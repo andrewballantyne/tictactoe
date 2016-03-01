@@ -12,4 +12,5 @@
 
 /// <reference path="dom/AbstractDomTicTacToe.ts" />
 /// <reference path="dom/CellWatcher.ts" />
+/// <reference path="dom/DialogHandler.ts" />
 /// <reference path="dom/GameDetails.ts" />

@@ -1,13 +1,38 @@
+.leftPositioned {
+  float: left;
+}
+.rightPositioned {
+  float: right;
+}
+.clearPositioning {
+  clear: both;
+}
+.centerAligned {
+  text-align: center;
+}
+
 body {
-  .controlBtn {
-    margin: 0 20px;
-    padding: 10px 40px;
+  .bigButton {
+    font-size: 200%;
+    padding: 25px;
   }
-  #newGameBtn {
-    float: left;
-  }
-  #resetDataBtn {
-    float: right;
+
+  .absoluteControls {
+    display: inline;
+
+    .controlBtn {
+      padding: 10px 40px;
+    }
+    .topLeftCorner {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    .topRightCorner {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
   }
 
   .gameHeader {
@@ -68,6 +93,12 @@ body {
 
         }
       }
+    }
+  }
+
+  .modalContainer {
+    .subTitle {
+      display: block;
     }
   }
 

@@ -172,7 +172,6 @@ class GameState {
   private validate():void {
     var victor:PlayerType = null;
     var victoryPath:number = -1;
-
     for (var i:number = 0; i < this.victoryPossibilities.length; i++) {
       var victoryCondition:string[] = this.victoryPossibilities[i];
 
@@ -203,12 +202,16 @@ class GameState {
       // Someone Won
       console.warn("Victor Determined: " + PlayerType[victor]);
       this.victoryPath = victoryPath;
+      Players.playerWon(victor);
       this.notifyForPlayerChange(victor, true);
+      this.notifyForGameChange(StateType.GAME_OVER);
     } else if (this.availableSpaces <= 0) {
       // Tie
       console.warn("Victor Determined: No One");
       this.victoryPath = null;
+      Players.playerWon(null);
       this.notifyForPlayerChange(null, true);
+      this.notifyForGameChange(StateType.GAME_OVER);
     }
   }
 

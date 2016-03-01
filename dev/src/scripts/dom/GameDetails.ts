@@ -38,7 +38,7 @@ class GameDetails extends AbstractDomTicTacToe {
     this.newGameBtn.on('click', () => {
       this.gameState.newGame();
     });
-    this.resetDataBtn.on('click', () => {
+    this.setupButtonForConfirmation(this.resetDataBtn, () => {
       this.gameState.resetAllData();
     });
   }
@@ -46,8 +46,6 @@ class GameDetails extends AbstractDomTicTacToe {
   private playerDataChanged(player:PlayerType, victor:boolean):void {
     if (victor) {
       // Victory
-      Players.playerWon(player);
-      this.updateScore();
     } else {
       // Player Change
       this.updatePlayer(player);
@@ -56,15 +54,18 @@ class GameDetails extends AbstractDomTicTacToe {
 
   private gameDataChanged(gameStateType:StateType):void {
     switch (gameStateType) {
-    case StateType.NEW_GAME:
-      this.updatePlayer(this.gameState.getCurrentPlayer());
-      break;
-    case StateType.RESET_DATA:
-      this.updatePlayer(this.gameState.getCurrentPlayer());
-      this.updateScore();
-      break;
-    default:
-      console.error("Missing state setting: " + gameStateType);
+      case StateType.NEW_GAME:
+        this.updatePlayer(this.gameState.getCurrentPlayer());
+        break;
+      case StateType.RESET_DATA:
+        this.updatePlayer(this.gameState.getCurrentPlayer());
+        this.updateScore();
+        break;
+      case StateType.GAME_OVER:
+        this.updateScore();
+        break;
+      default:
+        console.error("Missing state setting: " + gameStateType);
     }
   }
 

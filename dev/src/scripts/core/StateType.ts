@@ -5,5 +5,6 @@
  */
 enum StateType {
   NEW_GAME,
-  RESET_DATA
+  RESET_DATA,
+  GAME_OVER
 }
