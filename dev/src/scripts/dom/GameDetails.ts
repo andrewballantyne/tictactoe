@@ -7,6 +7,7 @@ class GameDetails extends AbstractDomTicTacToe {
   private gameState:GameState;
   private currentPlayerPane:JQuery;
   private newGameBtn:JQuery;
+  private newGameRandomPlayerBtn:JQuery;
   private resetDataBtn:JQuery;
   private cancelResetDataBtnConfirmation:()=>void;
   private totalGamesPlayed:JQuery;
@@ -20,6 +21,7 @@ class GameDetails extends AbstractDomTicTacToe {
     this.gameState = gameState;
     this.currentPlayerPane = $('#currentPlayer');
     this.newGameBtn = $('#newGameBtn');
+    this.newGameRandomPlayerBtn = $('#newGameRandomPlayerBtn').find('input');
     this.resetDataBtn = $('#resetDataBtn');
     this.cancelResetDataBtnConfirmation = null;
     this.totalGamesPlayed = $('#totalGames').find('.value');
@@ -37,6 +39,10 @@ class GameDetails extends AbstractDomTicTacToe {
     this.gameState.listenForPlayerChanges(this.playerDataChanged, this);
     this.gameState.listenForGameChanges(this.gameDataChanged, this);
 
+    this.newGameRandomPlayerBtn.on('change', (e:Event) => {
+      this.gameState.setNewGamePlayerRandom(this.newGameRandomPlayerBtn.prop('checked'));
+    });
+    this.gameState.setNewGamePlayerRandom(this.newGameRandomPlayerBtn.prop('checked')); // force to pick up whatever the dom has right now
     this.newGameBtn.on('click', () => {
       this.cancelResetDataBtnConfirmation();
       this.gameState.newGame();

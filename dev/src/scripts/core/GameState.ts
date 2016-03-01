@@ -16,6 +16,8 @@ interface GameChangeCallback extends BasicCallback {
 
 class GameState {
   private currentPlayer:PlayerType;
+  private randomPlayer:boolean;
+  private lastSelectedPlayer:PlayerType;
   private grid:GenericMap<PlayerType>;
   private victoryPossibilities:string[][];
   private victoryPath:number;
@@ -25,6 +27,8 @@ class GameState {
 
   constructor() {
     this.currentPlayer = null;
+    this.randomPlayer = false;
+    this.lastSelectedPlayer = null;
     this.grid = {};
     this.victoryPossibilities = null;
     this.victoryPath = null;
@@ -32,7 +36,7 @@ class GameState {
     this.gameChangeNotifiers = [];
     this.availableSpaces = 0;
 
-    this.setupRandomPlayer();
+    this.selectPlayer();
     this.setupGrid();
     this.setupVictoryPossibilities();
   }
@@ -115,12 +119,22 @@ class GameState {
     return this.victoryPossibilities[this.victoryPath];
   }
 
+  public setNewGamePlayerRandom(makeRandom:boolean):void {
+    this.randomPlayer = makeRandom;
+  }
+
+  /**
+   * Resets all the data and starts a new game.
+   */
   public resetAllData():void {
     Players.resetPlayerScores();
     this.reset();
     this.notifyForGameChange(StateType.RESET_DATA);
   }
 
+  /**
+   * Starts a new game.
+   */
   public newGame():void {
     this.reset();
     this.notifyForGameChange(StateType.NEW_GAME);
@@ -141,8 +155,22 @@ class GameState {
     }
   }
 
-  private setupRandomPlayer():void {
-    this.currentPlayer = PlayerType[PlayerType[Math.floor(Math.random() * Players.PLAYER_COUNT)]];
+  private selectPlayer():void {
+    if (this.randomPlayer || this.lastSelectedPlayer === null) {
+      // We want to random the player
+      this.currentPlayer = PlayerType[PlayerType[Math.floor(Math.random() * Players.PLAYER_COUNT)]];
+    } else {
+      // We want to use the exact opposite player that we used at the start of last game
+      if (this.lastSelectedPlayer === PlayerType.O_PLAYER) {
+        this.currentPlayer = PlayerType.X_PLAYER;
+      } else if (this.lastSelectedPlayer === PlayerType.X_PLAYER) {
+        this.currentPlayer = PlayerType.O_PLAYER;
+      } else {
+        console.error("Unknown last player.");
+      }
+    }
+
+    this.lastSelectedPlayer = this.currentPlayer;
   }
 
   private setupGrid():void {
@@ -218,6 +246,6 @@ class GameState {
   private reset():void {
     this.victoryPath = null;
     this.setupGrid();
-    this.setupRandomPlayer();
+    this.selectPlayer();
   }
 }

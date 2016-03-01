@@ -12,9 +12,15 @@
 <body>
 
 <div class="absoluteControls">
-  <button id="newGameBtn" class="btn btn-primary controlBtn topLeftCorner" title="Starts a new game, and randoms the starting player">
-    New Game
-  </button>
+  <div class="btn-group topLeftCorner" data-toggle="buttons">
+    <button id="newGameBtn" class="btn btn-primary controlBtn" title="Starts a new game">
+      New Game
+    </button>
+    <label id="newGameRandomPlayerBtn" class="btn btn-primary controlSmallBtn leftDivider"
+           title="Toggles if the starting player is random or the opposite of the last player that started">
+      <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-random"></span>
+    </label>
+  </div>
   <button id="resetDataBtn" class="btn btn-danger controlBtn topRightCorner" title="Triggers a New Game as well as resets all data">
     Reset Data
   </button>
