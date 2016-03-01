@@ -9,7 +9,7 @@ module.exports = function (grunt) {
   var OUTPUT_FOLDER = 'dev/bin/';
   var OUTPUT_FOLDER_JS = OUTPUT_FOLDER + 'scripts/';
   var OUTPUT_FOLDER_CSS = OUTPUT_FOLDER + 'styles/';
-  var OUTPUT_FOLDER_CSS_COMPILED = OUTPUT_FOLDER_CSS + 'compiled/'
+  var OUTPUT_FOLDER_CSS_COMPILED = OUTPUT_FOLDER_CSS + 'compiled/';
 
   grunt.initConfig({
     concat: {
@@ -59,6 +59,10 @@ module.exports = function (grunt) {
       }
     },
 
+    clean: {
+      compiledStyles: [OUTPUT_FOLDER_CSS_COMPILED]
+    },
+
     copy: {
       externalFiles: {
         files: [
@@ -75,6 +79,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
@@ -82,5 +87,5 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', ['dependencies', 'dev']);
   grunt.registerTask('dependencies', ['concat:externalScripts', 'concat:externalStyles', 'copy:externalFiles']);
-  grunt.registerTask('dev', ['ts:dev', 'sass:dev', 'concat:internalStyles']);
+  grunt.registerTask('dev', ['ts:dev', 'sass:dev', 'concat:internalStyles', 'clean:compiledStyles']);
 };

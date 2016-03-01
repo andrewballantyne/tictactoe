@@ -6,6 +6,7 @@
     "bower": "*",
     "grunt": "*",
     "grunt-cli": "*",
+    "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-sass": "*",
