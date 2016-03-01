@@ -14,6 +14,23 @@ In no particular order, these are the features I still would like to get in:
 
 ## Release Notes 
 
+### v1.2 \| Added Game Over Dialog, Confirmation Buttons, Win Percents
+
+**Features/Improvements:**
+ 
+* Added Game Over Dialog
+    * which allows you to reset the data or start another game
+* Confirmation buttons
+    * Confirmation buttons are buttons that require two-clicks to trigger (instead of the standard one)
+    * Important buttons (ie. Reset Data) that can be devastating if accidentally clicked, now are confirmation buttons
+    * The content of the button also switches, to showcase the double-click nature, to a "\<checkmark\> Are you sure?" 
+* Added percents to the numbers (wins/ties)
+* Continued improvements to the styles
+
+**Bug Fixes:**
+
+* BUG FIX: Reset Data didn't reset ties
+
 ### v1.1 \| Added Better Score Support, Mild Styling Improvements
 
 * Added Better Score Support
