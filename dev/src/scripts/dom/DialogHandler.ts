@@ -9,6 +9,7 @@ class DialogHandler extends AbstractDomTicTacToe {
   private gameOverDialogSubTitle:JQuery;
   private modalNewGameBtn:JQuery;
   private modalResetDataBtn:JQuery;
+  private cancelResetDataBtnConfirmation:()=>void;
 
   constructor(gameState:GameState) {
     super();
@@ -18,6 +19,7 @@ class DialogHandler extends AbstractDomTicTacToe {
     this.gameOverDialogSubTitle = this.gameOverDialog.find('.subTitle');
     this.modalNewGameBtn = this.gameOverDialog.find('#modalNewGameBtn');
     this.modalResetDataBtn = this.gameOverDialog.find('#modalResetDataBtn');
+    this.cancelResetDataBtnConfirmation = null;
 
     this.setupListeners();
   }
@@ -30,7 +32,7 @@ class DialogHandler extends AbstractDomTicTacToe {
       this.closeDialog();
       this.gameState.newGame();
     });
-    this.setupButtonForConfirmation(this.modalResetDataBtn, () => {
+    this.cancelResetDataBtnConfirmation = this.setupButtonForConfirmation(this.modalResetDataBtn, () => {
       this.closeDialog();
       this.gameState.resetAllData();
     });
@@ -73,6 +75,7 @@ class DialogHandler extends AbstractDomTicTacToe {
   }
 
   private closeDialog():void {
+    this.cancelResetDataBtnConfirmation();
     this.gameOverDialog.modal('hide');
   }
 }

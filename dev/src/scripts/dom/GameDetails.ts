@@ -8,6 +8,7 @@ class GameDetails extends AbstractDomTicTacToe {
   private currentPlayerPane:JQuery;
   private newGameBtn:JQuery;
   private resetDataBtn:JQuery;
+  private cancelResetDataBtnConfirmation:()=>void;
   private totalGamesPlayed:JQuery;
   private oPlayerScore:JQuery;
   private xPlayerScore:JQuery;
@@ -20,6 +21,7 @@ class GameDetails extends AbstractDomTicTacToe {
     this.currentPlayerPane = $('#currentPlayer');
     this.newGameBtn = $('#newGameBtn');
     this.resetDataBtn = $('#resetDataBtn');
+    this.cancelResetDataBtnConfirmation = null;
     this.totalGamesPlayed = $('#totalGames').find('.value');
     this.oPlayerScore = $('#oPlayer').find('.value');
     this.xPlayerScore = $('#xPlayer').find('.value');
@@ -36,14 +38,16 @@ class GameDetails extends AbstractDomTicTacToe {
     this.gameState.listenForGameChanges(this.gameDataChanged, this);
 
     this.newGameBtn.on('click', () => {
+      this.cancelResetDataBtnConfirmation();
       this.gameState.newGame();
     });
-    this.setupButtonForConfirmation(this.resetDataBtn, () => {
+    this.cancelResetDataBtnConfirmation = this.setupButtonForConfirmation(this.resetDataBtn, () => {
       this.gameState.resetAllData();
     });
   }
 
   private playerDataChanged(player:PlayerType, victor:boolean):void {
+    this.cancelResetDataBtnConfirmation();
     if (victor) {
       // Victory
     } else {
@@ -53,6 +57,7 @@ class GameDetails extends AbstractDomTicTacToe {
   }
 
   private gameDataChanged(gameStateType:StateType):void {
+    this.cancelResetDataBtnConfirmation();
     switch (gameStateType) {
       case StateType.NEW_GAME:
         this.updatePlayer(this.gameState.getCurrentPlayer());

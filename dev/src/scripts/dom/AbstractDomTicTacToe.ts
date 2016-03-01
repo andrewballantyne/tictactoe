@@ -16,8 +16,9 @@ abstract class AbstractDomTicTacToe {
    *
    * @param button - The button to make into a double-click (confirmation) button
    * @param callbackOnFinalTrigger - The callback to call once the confirmation has been received
+   * @returns - A "cancel" confirmation callback (this method will allow the calling code to reset the button)
    */
-  protected setupButtonForConfirmation(button:JQuery, callbackOnFinalTrigger:()=>void):void {
+  protected setupButtonForConfirmation(button:JQuery, callbackOnFinalTrigger:()=>void):()=>void {
     var contents:string = null;
     button.on('click', () => {
       if (contents === null) {
@@ -31,6 +32,13 @@ abstract class AbstractDomTicTacToe {
         callbackOnFinalTrigger();
       }
     });
+
+    return () => {
+      if (contents != null) {
+        button.html(contents);
+        contents = null;
+      }
+    };
   }
 
   /**
