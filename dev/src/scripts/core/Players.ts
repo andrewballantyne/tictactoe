@@ -62,5 +62,6 @@ class Players {
   public static resetPlayerScores():void {
     Players.score[<number>PlayerType.O_PLAYER] = 0;
     Players.score[<number>PlayerType.X_PLAYER] = 0;
+    Players.score[<number>PlayerType.TIE_PLAYER] = 0;
   }
 }
