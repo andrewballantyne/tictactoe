@@ -12,3 +12,19 @@ In no particular order, these are the features I still would like to get in:
 * More styling to give it a bit more flair
 * Mobile support
 
+## Release Notes 
+
+### v1.0 \| **Initial release**
+
+* X and O players
+* 8 possible winning paths
+    1. Top Row
+    2. Middle Row
+    3. Bottom Row
+    4. First Column
+    5. Second Column
+    6. Third Column
+    7. Top-Left to Bottom-Right
+    8. Top-Right to Bottom-Left
+* New Game randoms player
+    * To be changed later to maintain "who started first" and flip back and forth
