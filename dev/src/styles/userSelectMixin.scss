@@ -1,0 +1,10 @@
+///
+/// User Select is the ability for a user to select any part of the screen with a highlight. Calling this mixin will make it so that the
+/// user is unable to select anything. Use with caution.
+///
+@mixin user-select() {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

@@ -1,3 +1,5 @@
+@import 'userSelectMixin';
+
 .leftPositioned {
   float: left;
 }
@@ -12,6 +14,10 @@
 }
 
 body {
+  * {
+    @include user-select();
+  }
+
   .bigButton {
     font-size: 200%;
     padding: 25px;
