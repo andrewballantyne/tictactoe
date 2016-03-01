@@ -8,8 +8,10 @@ class GameDetails extends AbstractDomTicTacToe {
   private currentPlayerPane:JQuery;
   private newGameBtn:JQuery;
   private resetDataBtn:JQuery;
+  private totalGamesPlayed:JQuery;
   private oPlayerScore:JQuery;
   private xPlayerScore:JQuery;
+  private tiesScore:JQuery;
 
   constructor(gameState:GameState) {
     super();
@@ -18,8 +20,10 @@ class GameDetails extends AbstractDomTicTacToe {
     this.currentPlayerPane = $('#currentPlayer');
     this.newGameBtn = $('#newGameBtn');
     this.resetDataBtn = $('#resetDataBtn');
-    this.oPlayerScore = $('#oPlayer').find('.playerScore');
-    this.xPlayerScore = $('#xPlayer').find('.playerScore');
+    this.totalGamesPlayed = $('#totalGames').find('.value');
+    this.oPlayerScore = $('#oPlayer').find('.value');
+    this.xPlayerScore = $('#xPlayer').find('.value');
+    this.tiesScore = $('#ties').find('.value');
 
     this.setupListeners();
 
@@ -69,7 +73,14 @@ class GameDetails extends AbstractDomTicTacToe {
   }
 
   private updateScore():void {
-    this.oPlayerScore.text(Players.getPlayerScore(PlayerType.O_PLAYER));
-    this.xPlayerScore.text(Players.getPlayerScore(PlayerType.X_PLAYER));
+    var oScore:number = Players.getPlayerScore(PlayerType.O_PLAYER);
+    var xScore:number = Players.getPlayerScore(PlayerType.X_PLAYER);
+    var tied:number = Players.getPlayerScore(PlayerType.TIE_PLAYER);
+    var total:number = oScore + xScore + tied;
+
+    this.totalGamesPlayed.text(total);
+    this.oPlayerScore.text(oScore);
+    this.xPlayerScore.text(xScore);
+    this.tiesScore.text(tied);
   }
 }

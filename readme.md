@@ -14,6 +14,16 @@ In no particular order, these are the features I still would like to get in:
 
 ## Release Notes 
 
+### v1.1 \| **Added Better Score Support, Mild Styling Improvements**
+
+* Added Better Score Support
+    * Total Score is now calculated
+        * Only finished games are recorded, New Games mid-game are not recorded
+    * Ties are now recorded and shown
+        * When all squares are filled and no winner is awarded, a tie is added
+* Mild Styling Improvements
+    * Added wells for all items to help flair up the styling
+
 ### v1.0 \| **Initial release**
 
 * X and O players

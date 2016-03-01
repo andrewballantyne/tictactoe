@@ -29,10 +29,15 @@ class CellWatcher extends AbstractDomTicTacToe {
 
   private playerStateChanged(player:PlayerType, victor:boolean):void {
     if (victor) {
-      // This player just won
-      this.disable(this.gameSquares);
-      var victoryPath:string[] = this.gameState.getVictoryPath();
-      this.highlightVictoryPath(victoryPath);
+      // Game Over
+      if (player != null) {
+        // The provided player won
+        this.disable(this.gameSquares);
+        var victoryPath:string[] = this.gameState.getVictoryPath();
+        this.highlightVictoryPath(victoryPath);
+      } else {
+        // A tie, no winner
+      }
     } else {
       // Switch of players
     }
@@ -52,6 +57,10 @@ class CellWatcher extends AbstractDomTicTacToe {
   }
 
   private highlightVictoryPath(victoryPath:string[]):void {
+    if (victoryPath == null) {
+      console.error("Victory path is null; no winner, cannot highlight path");
+      return;
+    }
     for (var i:number = 0; i < victoryPath.length; i++) {
       var selector:string = '[data-coordinate=' + victoryPath[i] + ']';
       this.gameSquares.find(selector).addBack(selector).addClass('winningSquare');

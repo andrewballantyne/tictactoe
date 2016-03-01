@@ -21,14 +21,16 @@ class GameState {
   private victoryPath:number;
   private playerChangeNotifiers:PlayerChangeCallback[];
   private gameChangeNotifiers:GameChangeCallback[];
+  private availableSpaces:number;
 
   constructor() {
     this.currentPlayer = null;
-    this.grid = null;
+    this.grid = {};
     this.victoryPossibilities = null;
     this.victoryPath = null;
     this.playerChangeNotifiers = [];
     this.gameChangeNotifiers = [];
+    this.availableSpaces = 0;
 
     this.setupRandomPlayer();
     this.setupGrid();
@@ -41,6 +43,7 @@ class GameState {
    * Callbacks are triggered on the following conditions:
    *  - If a change in players  = (player === the new player) && (victory === false)
    *  - If a player wins        = (player === winner)         && (victory === true)
+   *  - If there is a tie       = (player === null)           && (victory === true)
    *
    * @param callback - A method that handles a PlayerType and a boolean parameter (see above more more details)
    * @param scope - The scope of the method
@@ -82,6 +85,7 @@ class GameState {
    */
   public registerClick(coordinate:string):void {
     this.grid[coordinate] = this.currentPlayer;
+    this.availableSpaces--;
     this.validate();
   }
 
@@ -142,7 +146,6 @@ class GameState {
   }
 
   private setupGrid():void {
-    this.grid = {};
     this.grid["A1"] = null;
     this.grid["A2"] = null;
     this.grid["A3"] = null;
@@ -152,6 +155,7 @@ class GameState {
     this.grid["C1"] = null;
     this.grid["C2"] = null;
     this.grid["C3"] = null;
+    this.availableSpaces = 9;
   }
   private setupVictoryPossibilities():void {
     this.victoryPossibilities = [[]];
@@ -196,9 +200,15 @@ class GameState {
     }
 
     if (victor !== null) {
+      // Someone Won
       console.warn("Victor Determined: " + PlayerType[victor]);
       this.victoryPath = victoryPath;
       this.notifyForPlayerChange(victor, true);
+    } else if (this.availableSpaces <= 0) {
+      // Tie
+      console.warn("Victor Determined: No One");
+      this.victoryPath = null;
+      this.notifyForPlayerChange(null, true);
     }
   }
 

@@ -5,5 +5,6 @@
  */
 enum PlayerType {
   X_PLAYER,
-  O_PLAYER
+  O_PLAYER,
+  TIE_PLAYER
 }

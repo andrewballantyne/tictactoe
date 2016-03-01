@@ -58,8 +58,15 @@ body {
     .scoreContainer {
       text-align: center;
 
-      .playerScore {
+      .valueContainer {
+        padding: 0;
 
+        .header {
+          border-bottom: 1px solid #ccc;
+        }
+        .value {
+
+        }
       }
     }
   }

@@ -20,6 +20,7 @@ class Players {
     Players.score = {};
     Players.score[<number>PlayerType.O_PLAYER] = 0;
     Players.score[<number>PlayerType.X_PLAYER] = 0;
+    Players.score[<number>PlayerType.TIE_PLAYER] = 0;
   }
 
   /**
@@ -45,10 +46,14 @@ class Players {
   /**
    * Increments the score for the provided player.
    *
-   * @param player - The player that won
+   * @param player - The player that won (null === tie)
    */
   public static playerWon(player:PlayerType):void {
-    Players.score[<number>player]++;
+    if (player === null) {
+      Players.score[<number>PlayerType.TIE_PLAYER]++;
+    } else {
+      Players.score[<number>player]++;
+    }
   }
 
   /**
