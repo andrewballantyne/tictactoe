@@ -14,7 +14,7 @@ In no particular order, these are the features I still would like to get in:
 
 ## Release Notes 
 
-### v1.1 \| **Added Better Score Support, Mild Styling Improvements**
+### v1.1 \| Added Better Score Support, Mild Styling Improvements
 
 * Added Better Score Support
     * Total Score is now calculated
@@ -24,7 +24,7 @@ In no particular order, these are the features I still would like to get in:
 * Mild Styling Improvements
     * Added wells for all items to help flair up the styling
 
-### v1.0 \| **Initial release**
+### v1.0 \| Initial release
 
 * X and O players
 * 8 possible winning paths
