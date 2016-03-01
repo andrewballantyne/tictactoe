@@ -55,14 +55,6 @@ body {
   }
 
   .contentContainer {
-    .stateContainer {
-      text-align: center;
-
-      .activePlayerPane {
-
-      }
-    }
-
     .gameBoardContainer {
       text-align: center;
 
@@ -112,6 +104,7 @@ body {
           flex: 0 0 50px;
           font-size: 42px;
           padding-top: 8px;
+          text-align: center;
         }
         .valueContainer {
           border-width: 2px;
@@ -138,8 +131,11 @@ body {
           }
         }
       }
-
     }
+  }
+
+  .tooSmallContainer {
+    display: none;
   }
 
   .modalContainer {
@@ -165,6 +161,85 @@ body {
 
     .copyright {
       color: #aaa;
+    }
+  }
+}
+
+@media screen and (max-width: 949px) {
+  body {
+    .contentContainer {
+      .gameBoardContainer {
+        .gameRow {
+          .gameCell {
+            height: 170px;
+            width: 170px;
+          }
+        }
+      }
+
+      .scoreContainer {
+        .statContainer {
+          .marker {
+            font-size: 36px;
+          }
+          .valueContainer {
+            .header {
+              font-size: 28px;
+            }
+            .value {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 799px) {
+  body {
+    .contentContainer {
+      .gameBoardContainer {
+        .gameRow {
+          .gameCell {
+            height: 125px;
+            width: 125px;
+          }
+        }
+      }
+
+      .scoreContainer {
+        .statContainer {
+          .marker {
+            flex: 0 0 30px;
+            font-size: 26px;
+            padding-top: 2px;
+          }
+          .valueContainer {
+            .header {
+              margin: 10px 0;
+              font-size: 18px;
+            }
+            .value {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 699px) {
+  body {
+    margin: 50px;
+
+    .absoluteControls {
+      display: none;
+    }
+    .contentContainer {
+      display: none;
+    }
+    .tooSmallContainer {
+      display: block;
     }
   }
 }
