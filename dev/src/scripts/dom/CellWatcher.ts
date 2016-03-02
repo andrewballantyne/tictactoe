@@ -36,7 +36,10 @@ class CellWatcher extends AbstractDomTicTacToe {
         break;
       case StateType.GAME_OVER:
         this.disable(this.gameSquares);
-        this.highlightVictoryPath(this.gameState.getVictoryPath());
+        var victoryPath:string[] = this.gameState.getVictoryPath();
+        if (victoryPath != null) {
+          this.highlightVictoryPath(victoryPath);
+        }
         break;
       default:
         console.error("Missing state setting: " + gameStateType);
