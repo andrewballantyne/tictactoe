@@ -12,7 +12,29 @@ In no particular order, these are the features I still would like to get in:
 * More styling to give it a bit more flair
 * Mobile support
 
-## Release Notes 
+## Devices Widths Supported
+
+Not all devices are supported, and currently most Mobile is not supported. The following chart shows the stages of which the UI will adjust
+ to your browser (device) size.
+ 
+| Device Width | Notes |
+|:------------:|:------|
+| \< 700px | Not a supported width, nothing is visible but a message |
+| 700px \< 800px | Game Cells and the scores are sized appropriately |
+| 800px \< 950px | Game Cells and the scores are sized appropriately |
+| \> 950px | **Ideal size** |
+ 
+Mobile support will come, but it seemed prudent to invest some time in making better support for browsers before investing time into AI.
+
+## Release Notes
+ 
+### v1.3 \| Better Device Support, Random Starting Player Toggle
+
+* Better Device Support
+    * Best explained by the table in [Devices Widths Supported](#devices-widths-supported) section, but in general no more cell wraps
+* Random Starting Player Toggle
+    * One of the to-do list items, this one is implemented via a toggle switch by the New Game button
+* Continued improvements to the styles
 
 ### v1.2 \| Added Game Over Dialog, Confirmation Buttons, Win Percents
 
