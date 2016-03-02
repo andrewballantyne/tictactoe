@@ -7,7 +7,6 @@ hours) to get a fully working basic version.
 
 In no particular order, these are the features I still would like to get in:
 
-* A toggle for new Game to manually flip the player instead of making it random
 * AI support with difficulty setting
 * More styling to give it a bit more flair
 * Mobile support
