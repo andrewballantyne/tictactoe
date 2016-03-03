@@ -14,6 +14,7 @@ class Main {
     new CellWatcher(gameState);
     new GameDetails(gameState);
     new DialogHandler(gameState);
+    new MainNavHandler();
   }
 }
 

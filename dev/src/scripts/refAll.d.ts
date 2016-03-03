@@ -14,3 +14,4 @@
 /// <reference path="dom/CellWatcher.ts" />
 /// <reference path="dom/DialogHandler.ts" />
 /// <reference path="dom/GameDetails.ts" />
+/// <reference path="dom/MainNavHandler.ts" />

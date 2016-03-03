@@ -74,7 +74,9 @@ body {
           text-align: center;
           width: 100px;
 
-          a {
+          .navbarButton {
+            cursor: pointer;
+            font-size: 18px;
             padding: 15px 0;
           }
         }
@@ -88,84 +90,97 @@ body {
   .contentContainer {
     margin-top: 50px;
 
-    .gameBoardContainer {
-      text-align: center;
+    .contentPane {
+      display: none;
+    }
+    .contentPane.active {
+      display: block;
+    }
+    .contentPane.gamePane {
+      .gameBoardContainer {
+        text-align: center;
 
-      .gameRow {
-        font-size: 0; // eliminates cell spacing
+        .gameRow {
+          font-size: 0; // eliminates cell spacing
 
-        .gameCell {
-          border: 1px solid black;
-          display: inline-block;
-          float: none;
-          height: 180px;
-          padding: 0;
-          margin: 2px;
-          text-align: center;
-          width: 180px;
+          .gameCell {
+            border: 1px solid black;
+            display: inline-block;
+            float: none;
+            height: 180px;
+            padding: 0;
+            margin: 2px;
+            text-align: center;
+            width: 180px;
 
-          .gameSquare {
-            background: #efefef;
-            border: none;
-            box-shadow: inset 1px 1px 5px black;
-            font-size: 72px;
-            height: 100%;
-            outline: none;
-            width: 100%;
+            .gameSquare {
+              background: #efefef;
+              border: none;
+              box-shadow: inset 1px 1px 5px black;
+              font-size: 72px;
+              height: 100%;
+              outline: none;
+              width: 100%;
+            }
+            .gameSquare.disabled {
+              background-color: #fff;
+              box-shadow: none;
+            }
+            .gameSquare.winningSquare {
+              background-color: lightgreen;
+            }
           }
-          .gameSquare.disabled {
-            background-color: #fff;
-            box-shadow: none;
+        }
+      }
+
+      .scoreContainer {
+        text-align: center;
+
+        .statContainer {
+          display: -webkit-flex;
+          display: flex;
+          flex-flow: row;
+
+          .marker {
+            color: #ccc;
+            flex: 0 0 50px;
+            font-size: 42px;
+            padding-top: 8px;
+            text-align: center;
           }
-          .gameSquare.winningSquare {
+          .valueContainer {
+            border-width: 2px;
+            flex: 1 0 auto;
+            margin-bottom: 10px;
+            padding: 0;
+
+            .header {
+              border-bottom: 1px solid #ccc;
+            }
+            .value {
+            }
+          }
+        }
+        .statContainer.active {
+          .marker {
+            color: green;
+          }
+          .valueContainer {
             background-color: lightgreen;
+            border-color: darkgreen;
+
+            .header {
+              border-color: green;
+            }
           }
         }
       }
     }
+    .contentPane.optionsPane {
 
-    .scoreContainer {
-      text-align: center;
-
-      .statContainer {
-        display: -webkit-flex;
-        display: flex;
-        flex-flow: row;
-
-        .marker {
-          color: #ccc;
-          flex: 0 0 50px;
-          font-size: 42px;
-          padding-top: 8px;
-          text-align: center;
-        }
-        .valueContainer {
-          border-width: 2px;
-          flex: 1 0 auto;
-          margin-bottom: 10px;
-          padding: 0;
-
-          .header {
-            border-bottom: 1px solid #ccc;
-          }
-          .value {
-          }
-        }
-      }
-      .statContainer.active {
-        .marker {
-          color: green;
-        }
-        .valueContainer {
-          background-color: lightgreen;
-          border-color: darkgreen;
-
-          .header {
-            border-color: green;
-          }
-        }
-      }
     }
+
+
   }
 
   .tooSmallContainer {
