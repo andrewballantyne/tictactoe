@@ -7,6 +7,7 @@ hours) to get a fully working basic version.
 
 In no particular order, these are the features I still would like to get in:
 
+* Add option support for AI/Game Cap/Win Cap/etc
 * AI support with difficulty setting
 * More styling to give it a bit more flair
 * Mobile support
