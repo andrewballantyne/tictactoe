@@ -14,7 +14,7 @@
 }
 
 body {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 
   * {
     @include user-select();
@@ -25,8 +25,8 @@ body {
     padding: 25px;
   }
 
-  .absoluteControls {
-    display: inline;
+  .mainGameControls {
+    padding: 10px 0;
 
     .controlBtn {
       padding: 10px 40px;
@@ -50,11 +50,44 @@ body {
   }
 
   .gameHeader {
-    margin-top: 20px;
-    text-align: center;
+    font-size: 24px;
+
+    .gameTitle {
+      color: #5e5e5e;
+      font-size: 32px;
+      margin-right: 0;
+      padding: 5px 20px;
+    }
+
+    .mainNav {
+      display: block;
+      float: left;
+
+      ul {
+        float: left;
+        margin: 0;
+
+        li {
+          border-right: 1px solid #ccc;
+          float: left;
+          font-size: 18px;
+          text-align: center;
+          width: 100px;
+
+          a {
+            padding: 15px 0;
+          }
+        }
+        li:first-child {
+          border-left: 1px solid #ccc;
+        }
+      }
+    }
   }
 
   .contentContainer {
+    margin-top: 50px;
+
     .gameBoardContainer {
       text-align: center;
 
@@ -65,11 +98,11 @@ body {
           border: 1px solid black;
           display: inline-block;
           float: none;
-          height: 200px;
+          height: 180px;
           padding: 0;
           margin: 2px;
           text-align: center;
-          width: 200px;
+          width: 180px;
 
           .gameSquare {
             background: #efefef;
@@ -109,6 +142,7 @@ body {
         .valueContainer {
           border-width: 2px;
           flex: 1 0 auto;
+          margin-bottom: 10px;
           padding: 0;
 
           .header {
@@ -136,6 +170,7 @@ body {
 
   .tooSmallContainer {
     display: none;
+    margin-top: 75px;
   }
 
   .modalContainer {
@@ -232,7 +267,12 @@ body {
   body {
     margin: 50px;
 
-    .absoluteControls {
+    .gameHeader {
+      .mainNav {
+        display: none;
+      }
+    }
+    .mainGameControls {
       display: none;
     }
     .contentContainer {

@@ -11,89 +11,108 @@
 </head>
 <body>
 
-<div class="absoluteControls">
-  <div class="btn-group topLeftCorner" data-toggle="buttons">
-    <button id="newGameBtn" class="btn btn-primary controlBtn" title="Starts a new game">
-      New Game
-    </button>
-    <label id="newGameRandomPlayerBtn" class="btn btn-primary controlSmallBtn leftDivider"
-           title="Toggles if the starting player is random or the opposite of the last player that started">
-      <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-random"></span>
-    </label>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid gameHeader">
+    <div class="navbar-header navbar-brand gameTitle">
+      <span class="glyphicon glyphicon-th"></span> Tic Tac Toe
+    </div>
+    <div class="navbar-default mainNav">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Game</a></li>
+        <li class="disabled"><a href="#">Options</a></li>
+      </ul>
+    </div>
   </div>
-  <button id="resetDataBtn" class="btn btn-danger controlBtn topRightCorner" title="Triggers a New Game as well as resets all data">
-    Reset Data
-  </button>
 </div>
 
-<header class="page-header gameHeader">
-  <h1>Tic Tac Toe</h1>
-</header>
-
 <div class="contentContainer container-fluid">
-  <div class="row">
-    <div class="col-xs-8 gameBoardContainer">
-      <div class="row gameRow">
-        <div class="col-sm-4 gameCell">
-          <button class="gameSquare" data-coordinate="A1">&nbsp;</button>
-        </div>
-        <div class="col-sm-4 gameCell">
-          <button class="gameSquare" data-coordinate="A2">&nbsp;</button>
-        </div>
-        <div class="col-sm-4 gameCell">
-          <button class="gameSquare" data-coordinate="A3">&nbsp;</button>
-        </div>
-      </div>
-      <div class="row gameRow">
-        <div class="col-sm-4 gameCell">
-          <button class="gameSquare" data-coordinate="B1">&nbsp;</button>
-        </div>
-        <div class="col-sm-4 gameCell">
-          <button class="gameSquare" data-coordinate="B2">&nbsp;</button>
-        </div>
-        <div class="col-sm-4 gameCell">
-          <button class="gameSquare" data-coordinate="B3">&nbsp;</button>
-        </div>
-      </div>
-      <div class="row gameRow">
-        <div class="col-sm-4 gameCell">
-          <button class="gameSquare" data-coordinate="C1">&nbsp;</button>
-        </div>
-        <div class="col-sm-4 gameCell">
-          <button class="gameSquare" data-coordinate="C2">&nbsp;</button>
-        </div>
-        <div class="col-sm-4 gameCell">
-          <button class="gameSquare" data-coordinate="C3">&nbsp;</button>
+  <div class="optionsPane">
+
+  </div>
+  <div class="gamePane">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="mainGameControls">
+          <div class="btn-group leftPositioned" data-toggle="buttons">
+            <button id="newGameBtn" class="btn btn-primary controlBtn" title="Starts a new game">
+              New Game
+            </button>
+            <label id="newGameRandomPlayerBtn " class="btn btn-primary controlSmallBtn leftDivider"
+                   title="Toggles if the starting player is random or the opposite of the last player that started">
+              <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-random"></span>
+            </label>
+          </div>
+          <button id="resetDataBtn" class="btn btn-danger controlBtn rightPositioned" title="Triggers a New Game as well as resets all data">
+            Reset Data
+          </button>
+          <div class="clearPositioning"></div>
         </div>
       </div>
     </div>
-    <div class="col-xs-4 scoreContainer">
-      <div id="totalGames" class="statContainer">
-        <div class="marker"></div>
-        <div class="well valueContainer">
-          <h1 class="header">Total Games</h1>
-          <h2 class="value">0</h2>
+    <div class="row">
+      <div class="col-xs-8 gameBoardContainer">
+        <div class="row gameRow">
+          <div class="col-sm-4 gameCell">
+            <button class="gameSquare" data-coordinate="A1">&nbsp;</button>
+          </div>
+          <div class="col-sm-4 gameCell">
+            <button class="gameSquare" data-coordinate="A2">&nbsp;</button>
+          </div>
+          <div class="col-sm-4 gameCell">
+            <button class="gameSquare" data-coordinate="A3">&nbsp;</button>
+          </div>
+        </div>
+        <div class="row gameRow">
+          <div class="col-sm-4 gameCell">
+            <button class="gameSquare" data-coordinate="B1">&nbsp;</button>
+          </div>
+          <div class="col-sm-4 gameCell">
+            <button class="gameSquare" data-coordinate="B2">&nbsp;</button>
+          </div>
+          <div class="col-sm-4 gameCell">
+            <button class="gameSquare" data-coordinate="B3">&nbsp;</button>
+          </div>
+        </div>
+        <div class="row gameRow">
+          <div class="col-sm-4 gameCell">
+            <button class="gameSquare" data-coordinate="C1">&nbsp;</button>
+          </div>
+          <div class="col-sm-4 gameCell">
+            <button class="gameSquare" data-coordinate="C2">&nbsp;</button>
+          </div>
+          <div class="col-sm-4 gameCell">
+            <button class="gameSquare" data-coordinate="C3">&nbsp;</button>
+          </div>
         </div>
       </div>
-      <div id="oPlayer" class="statContainer active">
-        <div class="marker"><span class="glyphicon glyphicon-chevron-left"></span></div>
-        <div class="well valueContainer">
-          <h1 class="header"><span class="glyphicon glyphicon-certificate"></span> Score</h1>
-          <h2 class="value">0</h2>
+      <div class="col-xs-4 scoreContainer">
+        <div id="totalGames" class="statContainer">
+          <div class="marker"></div>
+          <div class="well valueContainer">
+            <h1 class="header">Total Games</h1>
+            <h2 class="value">0</h2>
+          </div>
         </div>
-      </div>
-      <div id="xPlayer" class="statContainer">
-        <div class="marker"><span class="glyphicon glyphicon-chevron-left"></span></div>
-        <div class="well valueContainer">
-          <h1 class="header"><span class="glyphicon glyphicon-remove"></span> Score</h1>
-          <h2 class="value">0</h2>
+        <div id="oPlayer" class="statContainer active">
+          <div class="marker"><span class="glyphicon glyphicon-chevron-left"></span></div>
+          <div class="well valueContainer">
+            <h1 class="header"><span class="glyphicon glyphicon-certificate"></span> Score</h1>
+            <h2 class="value">0</h2>
+          </div>
         </div>
-      </div>
-      <div id="ties" class="statContainer">
-        <div class="marker"></div>
-        <div class="well valueContainer">
-          <h1 class="header">Ties</h1>
-          <h2 class="value">0</h2>
+        <div id="xPlayer" class="statContainer">
+          <div class="marker"><span class="glyphicon glyphicon-chevron-left"></span></div>
+          <div class="well valueContainer">
+            <h1 class="header"><span class="glyphicon glyphicon-remove"></span> Score</h1>
+            <h2 class="value">0</h2>
+          </div>
+        </div>
+        <div id="ties" class="statContainer">
+          <div class="marker"></div>
+          <div class="well valueContainer">
+            <h1 class="header">Ties</h1>
+            <h2 class="value">0</h2>
+          </div>
         </div>
       </div>
     </div>
@@ -137,7 +156,7 @@
 </div>
 
 <footer>
-  <div class="version">v1.3</div>
+  <div class="version">v1.4</div>
   <div class="copyright">Andrew Ballatnyne <span class="glyphicon glyphicon-copyright-mark"></span> 2016</div>
 </footer>
 
