@@ -12,7 +12,7 @@ In no particular order, these are the features I still would like to get in:
 * More styling to give it a bit more flair
 * Mobile support
 
-## Devices Widths Supported
+## Device Width Support
 
 Not all devices are supported, and currently most Mobile is not supported. The following chart shows the stages of which the UI will adjust
  to your browser (device) size.
