@@ -106,7 +106,9 @@ class GameDetails extends AbstractDomTicTacToe {
     var xScore:number = Players.getPlayerScore(PlayerType.X_PLAYER);
     var tieScore:number = Players.getPlayerScore(PlayerType.TIE_PLAYER);
     var total:number = oScore + xScore;
-    if (this.optionState.isEnabled(OptionType.TIES_COUNTED)) {
+    var tiePercent:string = "";
+    var countTies:boolean = this.optionState.isEnabled(OptionType.TIES_COUNTED);
+    if (countTies) {
       total += tieScore;
     }
 
@@ -118,11 +120,14 @@ class GameDetails extends AbstractDomTicTacToe {
       xScorePercent = xScore / total;
       tieScorePercent = tieScore / total;
     }
+    if (countTies) {
+      tiePercent = " (" + (tieScorePercent * 100).toFixed(1) + "%)";
+    }
 
     this.totalGamesPlayed.text(total);
     this.oPlayerScore.text(oScore + " (" + (oScorePercent * 100).toFixed(1) + "%)");
     this.xPlayerScore.text(xScore + " (" + (xScorePercent * 100).toFixed(1) + "%)");
-    this.tiesScore.text(tieScore + " (" + (tieScorePercent * 100).toFixed(1) + "%)");
+    this.tiesScore.text(tieScore + tiePercent);
   }
 
   private tiesIncluded(isIncluded:boolean):void {
