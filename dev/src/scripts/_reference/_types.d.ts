@@ -1,7 +1,7 @@
 /**
  * Created by Andrew on 2/28/16.
  */
-interface PlayerMap<T> {
+interface EnumMap<T> {
   [type:number]:T;
 }
 

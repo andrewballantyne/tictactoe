@@ -9,12 +9,14 @@ class Main {
 
     Players.init();
 
+    var optionState:OptionState = new OptionState();
     var gameState:GameState = new GameState();
 
     new CellWatcher(gameState);
-    new GameDetails(gameState);
+    new GameDetails(gameState, optionState);
     new DialogHandler(gameState);
     new MainNavHandler();
+    new OptionWatcher(optionState);
   }
 }
 

@@ -6,8 +6,8 @@
 class Players {
   public static PLAYER_COUNT:number = 2;
 
-  private static playerMapping:PlayerMap<string>;
-  private static score:PlayerMap<number>;
+  private static playerMapping:EnumMap<string>;
+  private static score:EnumMap<number>;
 
   /**
    * Setup the player data.

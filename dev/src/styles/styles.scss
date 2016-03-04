@@ -12,6 +12,21 @@
 .centerAligned {
   text-align: center;
 }
+.rightAligned {
+  text-align: right;
+}
+.row .snugRight {
+  padding-right: 0;
+}
+.alert {
+  .preNote {
+    font-weight: bold;
+  }
+  .keyword {
+    font-style: italic;
+    font-weight: bold;
+  }
+}
 
 body {
   margin-bottom: 40px;
@@ -174,10 +189,54 @@ body {
             }
           }
         }
+        #ties.fade {
+          opacity: .5;
+        }
       }
     }
     .contentPane.optionsPane {
+      .settingContainer {
+        input[type=number] {
+          padding-left: 5px;
+        }
 
+        .settingTitle {
+          font-size: 21px;
+        }
+        .settingBody {
+          padding-top: 5px;
+
+          .itemTitle {
+            font-size: 18px;
+            font-weight: bold;
+
+            small {
+              color: #999;
+              font-size: 14px;
+              padding: 0 10px;
+            }
+          }
+          .settingItemLabel {
+            font-size: 16px;
+            padding: 6px 0;
+          }
+        }
+      }
+      .settingContainer.playerSettings {
+
+      }
+      .settingContainer.gameSettings {
+        .multiWordedValue {
+          padding: 10px;
+
+          .preText {
+            padding: 0 5px;
+          }
+          .postText {
+            padding: 0 5px;
+          }
+        }
+      }
     }
 
 
@@ -218,26 +277,28 @@ body {
 @media screen and (max-width: 949px) {
   body {
     .contentContainer {
-      .gameBoardContainer {
-        .gameRow {
-          .gameCell {
-            height: 170px;
-            width: 170px;
+      .contentPane.gamePane {
+        .gameBoardContainer {
+          .gameRow {
+            .gameCell {
+              height: 170px;
+              width: 170px;
+            }
           }
         }
-      }
 
-      .scoreContainer {
-        .statContainer {
-          .marker {
-            font-size: 36px;
-          }
-          .valueContainer {
-            .header {
-              font-size: 28px;
+        .scoreContainer {
+          .statContainer {
+            .marker {
+              font-size: 36px;
             }
-            .value {
-              font-size: 20px;
+            .valueContainer {
+              .header {
+                font-size: 28px;
+              }
+              .value {
+                font-size: 20px;
+              }
             }
           }
         }
@@ -248,29 +309,31 @@ body {
 @media screen and (max-width: 799px) {
   body {
     .contentContainer {
-      .gameBoardContainer {
-        .gameRow {
-          .gameCell {
-            height: 125px;
-            width: 125px;
+      .contentPane.gamePane {
+        .gameBoardContainer {
+          .gameRow {
+            .gameCell {
+              height: 125px;
+              width: 125px;
+            }
           }
         }
-      }
 
-      .scoreContainer {
-        .statContainer {
-          .marker {
-            flex: 0 0 30px;
-            font-size: 26px;
-            padding-top: 2px;
-          }
-          .valueContainer {
-            .header {
-              margin: 10px 0;
-              font-size: 18px;
+        .scoreContainer {
+          .statContainer {
+            .marker {
+              flex: 0 0 30px;
+              font-size: 26px;
+              padding-top: 2px;
             }
-            .value {
-              font-size: 16px;
+            .valueContainer {
+              .header {
+                margin: 10px 0;
+                font-size: 18px;
+              }
+              .value {
+                font-size: 16px;
+              }
             }
           }
         }

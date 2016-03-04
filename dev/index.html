@@ -27,7 +27,92 @@
 
 <div class="contentContainer container-fluid">
   <div class="contentPane optionsPane">
-    <h3>Options Pane</h3>
+    <h2>Options Pane</h2>
+
+    <div class="panel-group" id="optionsAccordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default settingContainer gameSettings">
+        <div class="panel-heading" role="tab">
+          <h4 class="panel-title settingTitle">
+            <a role="button" data-toggle="collapse" data-parent="#optionsAccordion" href="#collapseGameOptions" aria-expanded="true" aria-controls="collapseGameOptions">
+              Game Options
+            </a>
+          </h4>
+        </div>
+        <div id="collapseGameOptions" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingGameOptions">
+          <div class="panel-body list-group settingBody">
+            <div class="list-group-item">
+              <div class="itemTitle">End Condition<small>Should there be a point in which the game should "end"?</small></div>
+              <div class="btn-group endConditionToggles" data-toggle="buttons">
+                <label class="btn btn-default" data-target="none"><input type="radio" /> None</label>
+                <label class="btn btn-default" data-target="afterGames"><input type="radio" /> Game Limit</label>
+                <label class="btn btn-default" data-target="bestOf"><input type="radio" /> Best Of</label>
+                <label class="btn btn-default" data-target="firstTo"><input type="radio" /> Win Limit</label>
+              </div>
+              <div id="endConditionValueContainer" class="multiWordedValue">
+                <label>
+                  <span class="preText">
+                    <span class="endConditionSentence firstTo">First To</span>
+                    <span class="endConditionSentence bestOf">Best Of</span>
+                    <span class="endConditionSentence afterGames">After</span>
+                  </span>
+                  <input id="endConditionValue" type="number" min="1" max="50" step="1" value="10" />
+                  <span class="postText">
+                    <span class="endConditionSentence afterGames">Games</span>
+                  </span>
+                </label>
+                <div class="endConditionWarnings">
+                  <div class="bestOfWarnings">
+                    <div class="alert alert-warning" data-condition="isEnabledTieCounts">
+                      <span class="preNote">Caution!</span> You may want to turn off the <span class="keyword">Tie Count</span> if you
+                      are going to use <em>Best Of</em> as an <em>End Condition</em> setting. Ties may prevent the end condition from
+                      reaching a full winner.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <div class="itemTitle">Ties Count<small>Does the Game Count add ties to the total?</small></div>
+              <div id="tiesEnabled" class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default yes"><input type="radio" name="tieCounts" /> Yes</label>
+                <label class="btn btn-default no"><input type="radio" name="tieCounts" /> No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default settingContainer playerSettings">
+        <div class="panel-heading" role="tab" id="headingPlayerOptions">
+          <h4 class="panel-title settingTitle">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#optionsAccordion" href="#collapsePlayerOptions" aria-expanded="false" aria-controls="collapsePlayerOptions">
+              Player Options
+            </a>
+          </h4>
+        </div>
+        <div id="collapsePlayerOptions" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPlayerOptions">
+          <div class="panel-body list-group container-fluid settingBody">
+            <div class="list-group-item">
+              <div class="row">
+                <div class="col-xs-3 col-sm-2 rightAligned snugRight"><label class="settingItemLabel">Game Mode:</label></div>
+                <div class="col-xs-9 col-sm-10">
+                  <div class="btn-group">
+                    <button class="btn btn-primary active">Player vs Player</button>
+                    <button class="btn btn-primary disabled" title="Coming Soon!">Player vs AI</button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="alert alert-info">
+                    Player vs AI coming soon!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="contentPane gamePane active">
     <div class="row">

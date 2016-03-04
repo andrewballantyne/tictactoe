@@ -5,6 +5,7 @@
  */
 class GameDetails extends AbstractDomTicTacToe {
   private gameState:GameState;
+  private optionState:OptionState;
   private newGameBtn:JQuery;
   private newGameRandomPlayerBtn:JQuery;
   private resetDataBtn:JQuery;
@@ -14,12 +15,14 @@ class GameDetails extends AbstractDomTicTacToe {
   private oPlayerScore:JQuery;
   private xPlayerContainer:JQuery;
   private xPlayerScore:JQuery;
+  private tiesContainer:JQuery;
   private tiesScore:JQuery;
 
-  constructor(gameState:GameState) {
+  constructor(gameState:GameState, optionState:OptionState) {
     super();
 
     this.gameState = gameState;
+    this.optionState = optionState;
     this.newGameBtn = $('#newGameBtn');
     this.newGameRandomPlayerBtn = $('#newGameRandomPlayerBtn').find('input');
     this.resetDataBtn = $('#resetDataBtn');
@@ -29,7 +32,8 @@ class GameDetails extends AbstractDomTicTacToe {
     this.oPlayerScore = this.oPlayerContainer.find('.value');
     this.xPlayerContainer = $('#xPlayer');
     this.xPlayerScore = this.xPlayerContainer.find('.value');
-    this.tiesScore = $('#ties').find('.value');
+    this.tiesContainer = $('#ties');
+    this.tiesScore = this.tiesContainer.find('.value');
 
     this.setupListeners();
 
@@ -40,6 +44,7 @@ class GameDetails extends AbstractDomTicTacToe {
   private setupListeners():void {
     this.gameState.listenForPlayerChanges(this.playerDataChanged, this);
     this.gameState.listenForGameChanges(this.gameDataChanged, this);
+    this.optionState.listenForGameChanges(this.gameDataChanged, this);
 
     this.newGameRandomPlayerBtn.on('change', (e:Event) => {
       this.gameState.setNewGamePlayerRandom(this.newGameRandomPlayerBtn.prop('checked'));
@@ -77,6 +82,10 @@ class GameDetails extends AbstractDomTicTacToe {
       case StateType.GAME_OVER:
         this.updateScore();
         break;
+      case StateType.OPTION_CHANGE:
+        this.updateScore();
+        this.tiesIncluded(this.optionState.isEnabled(OptionType.TIES_COUNTED));
+        break;
       default:
         console.error("Missing state setting: " + gameStateType);
     }
@@ -96,7 +105,10 @@ class GameDetails extends AbstractDomTicTacToe {
     var oScore:number = Players.getPlayerScore(PlayerType.O_PLAYER);
     var xScore:number = Players.getPlayerScore(PlayerType.X_PLAYER);
     var tieScore:number = Players.getPlayerScore(PlayerType.TIE_PLAYER);
-    var total:number = oScore + xScore + tieScore;
+    var total:number = oScore + xScore;
+    if (this.optionState.isEnabled(OptionType.TIES_COUNTED)) {
+      total += tieScore;
+    }
 
     var oScorePercent:number = 0;
     var xScorePercent:number = 0;
@@ -111,5 +123,13 @@ class GameDetails extends AbstractDomTicTacToe {
     this.oPlayerScore.text(oScore + " (" + (oScorePercent * 100).toFixed(1) + "%)");
     this.xPlayerScore.text(xScore + " (" + (xScorePercent * 100).toFixed(1) + "%)");
     this.tiesScore.text(tieScore + " (" + (tieScorePercent * 100).toFixed(1) + "%)");
+  }
+
+  private tiesIncluded(isIncluded:boolean):void {
+    if (isIncluded) {
+      this.tiesContainer.removeClass('fade');
+    } else {
+      this.tiesContainer.addClass('fade');
+    }
   }
 }
